@@ -25,3 +25,10 @@ class Doctor(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+    class Admin_Helth_CSV(models.Model):
+        name = models.CharField(max_length=100, null=True)
+        csv_files= models.FieldFile(null=True, blank=True)
+
+        def __str__(self):
+            return self.name

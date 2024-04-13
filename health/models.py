@@ -43,3 +43,11 @@ class Doctor(models.Model):
 
         def __str__ (self):
             return self.Patient.user.username   
+        
+class Feedback(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+    message = models.TextField(null=True)
+    data= models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.user.user.username

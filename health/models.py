@@ -32,3 +32,14 @@ class Doctor(models.Model):
 
         def __str__(self):
             return self.name
+        
+
+    class Search_Data(models.Model):
+        Patient = models.ForeignKey(Patient, on_delete=models.CASCADE, null=True)
+        Prediction_accuracy = models.CharField(max_length=100,null=True,blank=True)
+        result = models.CharField(max_length=100,null=True,blank=True)
+        values_list = models.CharField(max_length=100,null=True)
+        created = models.DateTimeField(auto_now=True,null=True)
+
+        def __str__ (self):
+            return self.Patient.user.username   

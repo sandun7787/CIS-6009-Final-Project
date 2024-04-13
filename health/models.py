@@ -13,4 +13,15 @@ class Patient(models.Model):
 
     def __str__(self):
         return self.user.username  
-# Create your models here.
+    
+class Doctor(models.Model):
+    status = models.IntegerField(DOCTOR_STATUS,null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    contact = models.CharField(max_length=100,null=True)
+    address = models.CharField(max_length=100,null=True)
+    category= models.CharField(max_length=100,null=True)
+    doj= models.DateField(null=True)
+    dob=models.DateField(null=True)
+
+    def __str__(self):
+        return self.user.username

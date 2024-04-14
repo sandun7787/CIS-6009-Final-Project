@@ -67,7 +67,32 @@ def assign_status(request,pid):
     def Gallery(request):
         return render(request,'Gallery.html')
     
-    
+
+    def Login_User(request):
+        error=""
+        if request.method == "POST":
+            u= request.POST['uname']
+            p=request.POST['pwd']
+            user= authenticate(username=u,password=p)
+            sign=""
+            try:
+                sign=Patient.objects.get(user=user)
+            except:
+                pass
+            if sign:
+                login(request,user)
+                error="pat1"
+
+            else:
+                login(request,user)
+                error="notmember"
+
+        else:
+          error="not"
+    d = {'error': error}
+    return render(request, 'login.html', d)
+
+
 
 
 

@@ -132,6 +132,40 @@ def Login_admin(request):
     return render(request,'register.html',d)
 
 
+def logout(request):
+    logout(request)
+    return redirect('home')
+
+@login_required(login_url="login")
+def Change_Password(request):
+    sign =0
+    user = User.object.get(username=request.user.username)
+    error = ""
+    if not request.user.is_staff:
+        try:
+            sign = Patient.objects.get(user=user)
+            if sign:
+                error ="pat"
+
+        except:
+            sign =Doctor.obejct.get(user=user)
+            terror=""
+            if c == n:
+                u =User.object.get(username__exact=request.user.username)
+                u.set_password(n)
+                u.save()
+                terror = "yes"
+
+            else:
+                terror="note"
+                d = {'error':error,'terror':terror,'data':sign}
+                return render (request,'change_password.html',d)
+            
+            
+
+        
+
+
 
 
 

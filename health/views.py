@@ -27,6 +27,16 @@ from django.http import HttpRequest
 def Home(request):
     return render(request,'carousel.html')
 
+def admin_Home(request):
+    dis = Seaech_Data.object.all()
+    pat = Patient.objects . all()
+    doc = Doctor.objects.all()
+    feed = Feedback.objecets.all()
+
+    d = {'dis':dis.count(),'pat':pat.count(),'doc':doc.count(), 'feed':feed.count()}
+    return render(request,'admin_home.html'd)
+
+
 
 
 def home(req,):

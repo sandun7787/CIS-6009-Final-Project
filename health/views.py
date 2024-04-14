@@ -36,6 +36,19 @@ def admin_Home(request):
     d = {'dis':dis.count(),'pat':pat.count(),'doc':doc.count(), 'feed':feed.count()}
     return render(request,'admin_home.html'd)
 
+@login_required(login_url="login")
+def assign_status(request,pid):
+    doctor =doctor.object.get(id=pid)
+    if Doctor.status == 1:
+        doctor.status = 2
+        messages.success(request, 'Selected doctor are successfully withdraw his approval')
+
+    else:
+        doctor.status=1
+        messages.success(request,'Selected doctor are  successfully approved.')
+        doctor
+        return redirect('view_doctor')
+
 
 
 

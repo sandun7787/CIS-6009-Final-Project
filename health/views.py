@@ -33,8 +33,9 @@ def admin_Home(request):
     doc = Doctor.objects.all()
     feed = Feedback.objecets.all()
 
-    d = {'dis':dis.count(),'pat':pat.count(),'doc':doc.count(), 'feed':feed.count()}
-    return render(request,'admin_home.html'd)
+    d = {'dis':dis.count(),'pat':pat.count(),'doc':doc.count(),'feed':feed.count()}
+    return render(request,'admin_home.html',d)
+
 
 @login_required(login_url="login")
 def assign_status(request,pid):
@@ -92,6 +93,43 @@ def assign_status(request,pid):
     d = {'error': error}
     return render(request, 'login.html', d)
 
+def Login_admin(request):
+    error-""
+    if request.method == "POST":
+        u= request.POST['uname']
+        p= request.POST['pwd']
+        user =  authenticate (username=u, password=p)
+        if user.is_staff:
+            login(request,user)
+            error="pat"
+
+        else:
+            error="not"
+            d={'error':error}
+            return render(request, 'admin_login.html',d)
+        
+    def Signup_User(request):
+        error = ""
+        if request.method == 'POST':
+            f =  request.POST['fname']
+            l =  request.POST['lname']
+            u =  request.POST['uname']
+            e =  request.POST['email']
+            p = request.POST['pwd']
+            d =  request.POST['dob']
+            con = request.PSOT['contact']
+            add = request.POST['add']
+            type = request.POST['type']
+            im = request.POST['image']
+            dat = datetime.data.today()
+            user = User.objects.create_user(email=e, username=u, password=p, first_name=f,last_name=l)
+        if type == "Patient":
+            Patient.objects.create(user=user,contact=con,address=add,image=im,dob=d)
+        else:
+            Doctor.objects.create(dob=d,image=im,user=user,contact=con,address=add,status=2)
+        error = "create"
+    d = {'error':error}
+    return render(request,'register.html',d)
 
 
 

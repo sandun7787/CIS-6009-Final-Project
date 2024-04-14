@@ -48,6 +48,26 @@ def assign_status(request,pid):
         messages.success(request,'Selected doctor are  successfully approved.')
         doctor
         return redirect('view_doctor')
+    
+
+    @login_required(login_url="login")
+    def User_Home(request):
+        return render(request,'patient_home.html')
+    
+    @login_required(login_url="login")
+    def Doctor_Home(request):
+        return render (request,'patient_home.html')
+    
+    def About(request):
+        return render(request,'about.html')
+    
+    def Contact(request):
+        return render(request,'contatct.html')
+    
+    def Gallery(request):
+        return render(request,'Gallery.html')
+    
+    
 
 
 

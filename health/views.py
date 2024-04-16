@@ -374,6 +374,19 @@ def Edit_My_deatail(request):
     return render(request,'edit_profile.html',d)
 
 
+@login_required(login_url='login')
+def sent_feedback(request):
+    terror = None
+    if request.method == "POST":
+        username = request.POST['uname']
+        message = request.POST['msg']
+        username = User.objects.get(username=username)
+        Feedback.objects.create(user=username, messages=message)
+        terror = "create"
+    return render(request, 'sent_feedback.html',{'terror':terror})
+
+
+
 
         
 

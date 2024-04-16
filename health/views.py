@@ -283,6 +283,96 @@ def View_Patient(request):
     return render(request,'view_patient.html',d)
 
 
+@login_required(login_url="login")
+def View_Feedback(request):
+    dis = Feedback.objects.all()
+    d = {'dis':dis}
+    return render(request,'view_feedback.html',d)
+
+@login_required(login_url="login")
+def View_My_Detail(request):
+    terror = ""
+    user = User.objects.get(id=request.user.id)
+    error = ""
+    try:
+        sign = Patient.objects.get(user=user)
+        error = "pat"
+    except:
+        sign = Doctor.objects.get(user=user)
+    d = {'error': error,'pro':sign}
+    return render(request,'profile_doctor.html',d)
+
+@login_required(login_url="login")
+def Edit_Doctor(request,pid):
+    doc = Doctor.objects.get(id=pid)
+    error = ""
+    # type = Type.objects.all()
+    if request.method == 'POST':
+        f = request.POST['fname']
+        l = request.POST['lname']
+        e = request.POST['email']
+        con = request.POST['contact']
+        add = request.POST['add']
+        cat = request.POST['type']
+        try:
+            im = request.FILES['image']
+            doc.image=im
+            doc.save()
+        except:
+            pass
+        dat = datetime.date.today()
+        doc.user.first_name = f
+        doc.user.last_name = l
+        doc.user.email = e
+        doc.contact = con
+        doc.category = cat
+        doc.address = add
+        doc.user.save()
+        doc.save()
+        error = "create"
+    d = {'error':error,'doc':doc,'type':type}
+    return render(request,'edit_doctor.html',d)
+
+@login_required(login_url="login")
+def Edit_My_deatail(request):
+    terror = ""
+    print("Hii welvome")
+    user = User.objects.get(id=request.user.id)
+    error = ""
+    # type = Type.objects.all()
+    try:
+        sign = Patient.objects.get(user=user)
+        error = "pat"
+    except:
+        sign = Doctor.objects.get(user=user)
+    if request.method == 'POST':
+        f = request.POST['fname']
+        l = request.POST['lname']
+        e = request.POST['email']
+        con = request.POST['contact']
+        add = request.POST['add']
+        try:
+            im = request.FILES['image']
+            sign.image = im
+            sign.save()
+        except:
+            pass
+        to1 = datetime.date.today()
+        sign.user.first_name = f
+        sign.user.last_name = l
+        sign.user.email = e
+        sign.contact = con
+        if error != "pat":
+            cat = request.POST['type']
+            sign.category = cat
+            sign.save()
+        sign.address = add
+        sign.user.save()
+        sign.save()
+        terror = "create"
+    d = {'error':error,'terror':terror,'doc':sign}
+    return render(request,'edit_profile.html',d)
+
 
 
         

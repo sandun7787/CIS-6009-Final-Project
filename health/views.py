@@ -175,6 +175,81 @@ def preprocess_input(df,scaler):
     dataframe = str(df.head())
     return (nn_model.score(X_test, y_test) * 100),(pred)
 
+@login_required(login_url="login")
+def add_doctor(request,pid=None):
+    doctor = None
+    if pid:
+        doctor = Doctor.objects.get(id=pid)
+    if request.method == "POST":
+        form = DoctorForm(request.POST, request.FILES, instance = doctor)
+        if form.is_valid():
+            new_doc = form.save()
+            new_doc.status = 1
+            if not pid:
+                user = User.objects.create_user(password=request.POST['password'], username=request.POST['username'], first_name=request.POST['first_name'], last_name=request.POST['last_name'])
+                new_doc.user = user
+            new_doc.save()
+            return redirect('view_doctor')
+    d = {"doctor": doctor}
+    return render(request, 'add_doctor.html', d)
+
+@login_required(login_url="login")
+def add_heartdetail(request):
+    if request.method == "POST":
+        # list_data = [57, 0, 1, 130, 236, 0, 0, 174, 0, 0.0, 1, 1, 2]
+        list_data = []
+        value_dict = eval(str(request.POST)[12:-1])
+        count = 0
+        for key,value in value_dict.items():
+            if count == 0:
+                count =1
+                continue
+            if key == "sex" and value[0] == "Male" or value[0] == 'male' or value[0]=='m' or value[0] == 'M':
+                list_data.append(0)
+                continue
+            elif key == "sex":
+                list_data.append(1)
+                continue
+            list_data.append(value[0])
+
+        # list_data = [57, 0, 1, 130, 236, 0, 0, 174, 0, 0.0, 1, 1, 2]
+        accuracy,pred = prdict_heart_disease(list_data)
+        patient = Patient.objects.get(user=request.user)
+        Search_Data.objects.create(patient=patient, prediction_accuracy=accuracy, result=pred[0], values_list=list_data)
+        rem = int(pred[0])
+        print("Result = ",rem)
+        if pred[0] == 0:
+            pred = "<span style='color:green'>You are healthy</span>"
+        else:
+            pred = "<span style='color:red'>You are Unhealthy, Need to Checkup.</span>"
+        return redirect('predict_desease', str(rem), str(accuracy))
+    return render(request, 'add_heartdetail.html')
+
+@login_required(login_url="login")
+def predict_desease(request, pred, accuracy):
+    doctor = Doctor.objects.filter(address__icontains=Patient.objects.get(user=request.user).address)
+    d = {'pred': pred, 'accuracy':accuracy, 'doctor':doctor}
+    return render(request, 'predict_disease.html', d)
+
+@login_required(login_url="login")
+def view_search_pat(request):
+    doc = None
+    try:
+        doc = Doctor.objects.get(user=request.user)
+        data = Search_Data.objects.filter(patient__address__icontains=doc.address).order_by('-id')
+    except:
+        try:
+            doc = Patient.objects.get(user=request.user)
+            data = Search_Data.objects.filter(patient=doc).order_by('-id')
+        except:
+            data = Search_Data.objects.all().order_by('-id')
+    return render(request,'view_search_pat.html',{'data':data})
+
+@login_required(login_url="login")
+def delete_doctor(request,pid):
+    doc = Doctor.objects.get(id=pid)
+    doc.delete()
+    return redirect('view_doctor')
 
 
 

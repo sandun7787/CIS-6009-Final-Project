@@ -252,6 +252,37 @@ def delete_doctor(request,pid):
     return redirect('view_doctor')
 
 
+@login_required(login_url="login")
+def delete_feedback(request,pid):
+    doc = Feedback.objects.get(id=pid)
+    doc.delete()
+    return redirect('view_feedback')
+
+@login_required(login_url="login")
+def delete_patient(request,pid):
+    doc = Patient.objects.get(id=pid)
+    doc.delete()
+    return redirect('view_patient')
+
+@login_required(login_url="login")
+def delete_searched(request,pid):
+    doc = Search_Data.objects.get(id=pid)
+    doc.delete()
+    return redirect('view_search_pat')
+
+@login_required(login_url="login")
+def View_Doctor(request):
+    doc = Doctor.objects.all()
+    d = {'doc':doc}
+    return render(request,'view_doctor.html',d)
+
+@login_required(login_url="login")
+def View_Patient(request):
+    patient = Patient.objects.all()
+    d = {'patient':patient}
+    return render(request,'view_patient.html',d)
+
+
 
 
         

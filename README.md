@@ -126,3 +126,44 @@ Start the server
 ```bash
   python manage.py runserver
 ```
+## Model Training(Machine Learning)
+
+```javascript
+def prdict_heart_disease(list_data):
+    csv_file = Admin_Helath_CSV.objects.get(id=1)
+    df = pd.read_csv(csv_file.csv_file)
+
+    X = df[['age','sex','cp','trestbps','chol','fbs','restecg','thalach','exang','oldpeak','slope','ca','thal']]
+    y = df['target']
+    X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8, random_state=0)
+    nn_model = GradientBoostingClassifier(n_estimators=100,learning_rate=1.0,max_depth=1, random_state=0)
+    nn_model.fit(X_train, y_train)
+    pred = nn_model.predict([list_data])
+    print("Neural Network Accuracy: {:.2f}%".format(nn_model.score(X_test, y_test) * 100))
+    print("Prdicted Value is : ", format(pred))
+    dataframe = str(df.head())
+    return (nn_model.score(X_test, y_test) * 100),(pred)
+```
+## Output Screen-shots
+When the application is runned then, a Welcome Page pops-up
+<img src="https://github.com/Kumar-laxmi/Heart-Disease-Prediction-System/blob/main/SCREEN-SHOTS/WelcomePage.png" />
+
+Admin Dash-board:
+<img src="https://github.com/Kumar-laxmi/Heart-Disease-Prediction-System/blob/main/SCREEN-SHOTS/AdminDashboard.png" />
+
+Entering Heart Details to check our Health:
+<img src="https://github.com/Kumar-laxmi/Heart-Disease-Prediction-System/blob/main/SCREEN-SHOTS/AddHeartDetail.png" />
+
+Since these details are stored in the Data-base, so we can also retrieve past results:
+<img src="https://github.com/Kumar-laxmi/Heart-Disease-Prediction-System/blob/main/SCREEN-SHOTS/SearchLogs1.png" />
+
+To view our own details:
+<img src="https://github.com/Kumar-laxmi/Heart-Disease-Prediction-System/blob/main/SCREEN-SHOTS/ViewMyDetaile.png" />
+
+If a user doesn't understand how to use the application then he can:
+<img src="https://github.com/Kumar-laxmi/Heart-Disease-Prediction-System/blob/main/SCREEN-SHOTS/IntroductionViewVideo.png" />
+
+To view registered Doctor information:
+<img src="https://github.com/Kumar-laxmi/Heart-Disease-Prediction-System/blob/main/SCREEN-SHOTS/DoctorRecords.png" />
+
+## NOTE: GitHub Pages is not working

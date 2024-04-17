@@ -95,10 +95,6 @@ the system and what all are the diseases predicted by the system.*
   - ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
   - ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
   - ![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
-- Database:
-  - ![SQLite](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
-- #### Data-Set for training:
-  - <a href="https://github.com/Kumar-laxmi/Heart-Disease-Prediction-System/blob/main/Machine_Learning/heart.csv">Click here for DATA-SET</a>
 - #### IDE:
   - ![VS Code](https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
   - ![pyCharm](https://img.shields.io/badge/PyCharm-000000.svg?&style=for-the-badge&logo=PyCharm&logoColor=white)
@@ -106,3 +102,33 @@ the system and what all are the diseases predicted by the system.*
   - ![MacOS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=apple&logoColor=white)
   - ![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
   - ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
+ 
+  - Go to the project directory
+
+```bash
+  cd Heart-Disease-Prediction-System
+```
+
+Start the server
+
+```bash
+  python manage.py runserver
+```
+
+## Model Training(Machine Learning)
+
+```javascript
+def prdict_heart_disease(list_data):
+    csv_file = Admin_Helath_CSV.objects.get(id=1)
+    df = pd.read_csv(csv_file.csv_file)
+
+    X = df[['age','sex','cp','trestbps','chol','fbs','restecg','thalach','exang','oldpeak','slope','ca','thal']]
+    y = df['target']
+    X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8, random_state=0)
+    nn_model = GradientBoostingClassifier(n_estimators=100,learning_rate=1.0,max_depth=1, random_state=0)
+    nn_model.fit(X_train, y_train)
+    pred = nn_model.predict([list_data])
+    print("Neural Network Accuracy: {:.2f}%".format(nn_model.score(X_test, y_test) * 100))
+    print("Prdicted Value is : ", format(pred))
+    dataframe = str(df.head())
+    return (nn_model.score(X_test, y_test) * 100),(pred)

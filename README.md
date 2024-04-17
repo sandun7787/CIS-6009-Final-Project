@@ -146,24 +146,41 @@ def prdict_heart_disease(list_data):
 ```
 ## Output Screen-shots
 When the application is runned then, a Welcome Page pops-up
-<img src="https://github.com/Kumar-laxmi/Heart-Disease-Prediction-System/blob/main/SCREEN-SHOTS/WelcomePage.png" />
+<img width="960" alt="Screenshot 2024-04-17 112103" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/2b8fe61c-8e6e-4f49-9026-88c674fc45a7">
+<img width="960" alt="2" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/5b192307-d59e-4283-b9bc-b0a821275bf9">
+<img width="960" alt="3" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/8f0241dc-d105-4123-b3ed-68a0ac6383bd">
+<img width="960" alt="4" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/e186c3e1-c150-4ea7-b575-02c09379fa1e">
+<img width="959" alt="5" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/ffdadedd-c12b-4e1c-b8ed-4131fd13306d">
+<img width="960" alt="6" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/0333744f-f0b5-44d2-a2da-d6cd284c078a">
+<img width="959" alt="7" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/47d479a7-15a8-4c32-8a31-de2dbfe0a977">
+
+<img width="960" alt="9" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/2b3865e6-41c6-42d8-bc99-6f3cf24487bc">
+<img width="960" alt="10" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/2478745e-76fe-475b-a970-311c431eac48">
+<img width="960" alt="11" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/9d6f7cc3-250f-497c-a4b2-3368256af63f">
+<img width="960" alt="12" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/dfd39de2-0a02-4837-ac8a-19a4000735c2">
+<img width="960" alt="13" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/4e23f8f1-c618-45ae-8702-5a62a2bd0f91">
+<img width="960" alt="14" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/54da31c0-cff8-4be6-8f7d-df745d2b0039">
+<img width="959" alt="15" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/2c4fade7-d08f-48bb-8103-dc3dcf68e7ea">
+<img width="959" alt="16" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/98ff8d5f-858c-4160-a706-5cf2555cdf12">
+<img width="960" alt="17" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/9a44a347-ca95-44ed-833c-594f14450bca">
+
 
 Admin Dash-board:
-<img src="https://github.com/Kumar-laxmi/Heart-Disease-Prediction-System/blob/main/SCREEN-SHOTS/AdminDashboard.png" />
+<img src="" />
 
 Entering Heart Details to check our Health:
-<img src="https://github.com/Kumar-laxmi/Heart-Disease-Prediction-System/blob/main/SCREEN-SHOTS/AddHeartDetail.png" />
+<img src="" />
 
 Since these details are stored in the Data-base, so we can also retrieve past results:
-<img src="https://github.com/Kumar-laxmi/Heart-Disease-Prediction-System/blob/main/SCREEN-SHOTS/SearchLogs1.png" />
+<img src="" />
 
 To view our own details:
-<img src="https://github.com/Kumar-laxmi/Heart-Disease-Prediction-System/blob/main/SCREEN-SHOTS/ViewMyDetaile.png" />
+<img src="" />
 
 If a user doesn't understand how to use the application then he can:
-<img src="https://github.com/Kumar-laxmi/Heart-Disease-Prediction-System/blob/main/SCREEN-SHOTS/IntroductionViewVideo.png" />
+<img src="" />
 
 To view registered Doctor information:
-<img src="https://github.com/Kumar-laxmi/Heart-Disease-Prediction-System/blob/main/SCREEN-SHOTS/DoctorRecords.png" />
+<img src="" />
 
 ## NOTE: GitHub Pages is not working

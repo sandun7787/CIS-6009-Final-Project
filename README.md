@@ -99,3 +99,30 @@ the system and what all are the diseases predicted by the system.*
   - ![SQLite](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
 - #### Data-Set for training:
   - <a href="https://github.com/sandun7787/CIS-6009-Final-Project/blob/main/Machine_Learning/heart.csv">Click here for DATA-SET</a>
+  - #### IDE:
+  - ![VS Code](https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
+  - ![pyCharm](https://img.shields.io/badge/PyCharm-000000.svg?&style=for-the-badge&logo=PyCharm&logoColor=white)
+- #### OS used for testing:
+  - ![MacOS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=apple&logoColor=white)
+  - ![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
+  - ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone git@github.com:sandun7787/CIS-6009-Final-Project.git
+```
+
+Go to the project directory
+
+```bash
+  cd Heart-Disease-Prediction-System
+```
+
+Start the server
+
+```bash
+  python manage.py runserver
+```

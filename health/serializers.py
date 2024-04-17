@@ -8,14 +8,14 @@ class ClientSerializer(serializers.ModelSerializer):
         fields = ('id','email','name','interestlevel',''address','useremail','created','updated')
 """
 
-#class PatientSerializer(serializers.ModelSerializer):
+class PatientSerializer(serializers.ModelSerializer):
     # username = serializers.SlugRelatedField(slug_field=models.User.USERNAME_FIELD,required=False, allow_null=True, queryset=models.User.objects.all(), source='user')
     # first_name = serializers.CharField(source='user.first_name')
     # last_name = serializers.CharField(source='user.last_name')
     # email = serializers.CharField(source='user.email')
-    #class Meta:
-      #  model = models.Patient
-      #  fields = ('address', 'contact',)#'user','username', 'first_name', 'last_name', 'email')
+    class Meta:
+        model = models.Patient
+        fields = ('address', 'contact',)#'user','username', 'first_name', 'last_name', 'email')
 
 # assigned = serializers.SlugRelatedField(
 #         slug_field=User.USERNAME_FIELD, required=False, allow_null=True,

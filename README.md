@@ -145,7 +145,6 @@ def prdict_heart_disease(list_data):
     return (nn_model.score(X_test, y_test) * 100),(pred)
 ```
 ## Output Screen-shots
-When the application is runned then, a Welcome Page pops-up
 <img width="960" alt="Screenshot 2024-04-17 112103" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/2b8fe61c-8e6e-4f49-9026-88c674fc45a7">
 <img width="960" alt="2" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/5b192307-d59e-4283-b9bc-b0a821275bf9">
 <img width="960" alt="3" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/8f0241dc-d105-4123-b3ed-68a0ac6383bd">
@@ -163,24 +162,5 @@ When the application is runned then, a Welcome Page pops-up
 <img width="959" alt="15" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/2c4fade7-d08f-48bb-8103-dc3dcf68e7ea">
 <img width="959" alt="16" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/98ff8d5f-858c-4160-a706-5cf2555cdf12">
 <img width="960" alt="17" src="https://github.com/sandun7787/CIS-6009-Final-Project/assets/75010950/9a44a347-ca95-44ed-833c-594f14450bca">
-
-
-Admin Dash-board:
-<img src="" />
-
-Entering Heart Details to check our Health:
-<img src="" />
-
-Since these details are stored in the Data-base, so we can also retrieve past results:
-<img src="" />
-
-To view our own details:
-<img src="" />
-
-If a user doesn't understand how to use the application then he can:
-<img src="" />
-
-To view registered Doctor information:
-<img src="" />
 
 ## NOTE: GitHub Pages is not working
